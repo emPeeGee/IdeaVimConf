@@ -1,0 +1,148 @@
+let mapleader = " "
+
+" nnoremap <Space> :action LeaderAction<cr>
+" vnoremap <Space> :action LeaderAction<cr>
+
+Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'machakann/vim-highlightedyank'
+
+set NERDTree
+set sneak
+" set surround
+
+set commentary
+set which-key
+
+" set number relativenumber
+
+" Do incremental searching.
+set incsearch
+set hlsearch
+
+" Smart join for J
+set ideajoin
+
+" keep some lines before and after the cursor visible
+set scrolloff=8 sidescrolloff=10
+
+" Which-key settings
+set notimeout
+let g:WhichKey_DefaultDelay = 600
+let g:WhichKey_FontSize = 14
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKeyDesc_Files = "<Space>f  Files And Operations"
+let g:WhichKeyDesc_Git = "<Space>g  Git"
+let g:WhichKeyDesc_GitGutter = "<Space>h  Git Gutter"
+let g:WhichKeyDesc_NERDTree = "<Space>n  NERDTree"
+let g:WhichKeyDesc_Miscellaneous = "<Space>o  Miscellaneous"
+let g:WhichKeyDesc_SettingsRelated= "<Space>s  Settings Related"
+let g:WhichKeyDesc_Folding = "<Space>z  Folding"
+let g:WhichKeyDesc_Jump = "<Space><Space>  KJump aka EasyMotion"
+
+" Keybindings
+" Enter normal mode
+inoremap jj <Esc>
+
+" Hide highlight
+nnoremap g/ :noh<CR>
+
+" Since I don't use Go to part of the screen map L to be as $ and H to ^"
+nnoremap L $
+nnoremap H ^
+
+" make Y behave like D and C, yanking till end of line
+map Y y$
+
+" don't lose selection when indenting
+vnoremap < <gv
+vnoremap > >gv
+vnoremap = =gv
+
+
+nnoremap <Leader>o= :action ReformatCode<CR>
+nnoremap <leader>oi :action OptimizeImports<CR>
+
+" Git emulation
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap <leader>hu :action Vcs.RollbackChangedLines<cr>
+nnoremap <leader>hp :action Vcs.ShowHistoryForBlock<cr>
+nnoremap <leader>gc :action Vcs.Show.Local.Changes <cr>
+nmap <leader>gg <action>(Git.Menu)
+nmap <leader>gf <action>(Vcs.ShowTabbedFileHistory)
+" List with changed files
+
+
+" Paired commands
+nnoremap ]g :action GotoNextError<CR>
+nnoremap [g :action GotoPreviousError<CR>
+
+nmap ]b <Action>(NextTab)
+nmap [b <Action>(PreviousTab)
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
+
+" Creates new line below or above but stay in normal mode
+nmap ]<leader> o<Esc>k
+nmap [<leader> O<Esc>j
+
+" Folding
+nnoremap [z :action CollapseRegion<CR>
+nnoremap ]z :action ExpandRegion<CR>
+nnoremap <leader>zZ :action CollapseAllRegions<CR>
+nnoremap <leader>zz :action ExpandAllRegions<CR>
+
+" Go to... . JetBrains features. Different actions.
+nnoremap \r :action ShowUsages<CR>
+nnoremap \s :action GotoSuperMethod<CR>
+nnoremap \i :action GotoImplementation<CR>
+nnoremap \, :action JumpToLastChange <CR>
+nnoremap \. :action JumpToNextChange <CR>
+nnoremap \t :action GotoTest<CR>
+nmap \w <action>(ShowErrorDescription)
+nmap \x :action CloseContent <CR>
+nnoremap \q :action Refactorings.QuickListPopupAction<CR>
+
+" NERDTree
+" Space on file shows modal with content
+nmap <leader>nn :NERDTreeToggle<CR>
+nmap <leader>nf :NERDTreeFocus<CR>
+
+" Files, Search and Changes
+nmap <leader>ff :action GotoFile<CR>
+nmap <leader>fr :action RecentFiles<CR>
+nmap <leader>fe :action SearchEverywhere<CR>
+nmap <leader>fg :action FindInPath<CR>
+nmap <leader>ft :action FileStructurePopup<CR>
+nmap <leader>fa :action GotoAction<CR>
+nmap <leader>fl :action RecentLocations<CR>
+nmap <leader>fh :action LocalHistory.ShowHistory<CR>
+nnoremap <leader>fb :action Switcher<CR>
+
+" Move the line using alt and jk https://vim.fandom.com/wiki/Moving_lines_up_or_down
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+nnoremap <leader>ov :source ~/.ideavimrc<CR>
+nnoremap <leader>or :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Settings
+nnoremap <Leader>ss :action ShowSettings<CR>
+nnoremap <Leader>sp :action ShowFilePath<CR>
+
+nmap <leader><leader>s :action KJumpAction<cr>
+nmap <leader><leader>w :action KJumpAction.Word0<cr>
+nmap <leader><leader>l :action KJumpAction.Line<cr>
+
+" Todo:
+" And idea related stuff. Partially
+" To handle different idea actions. In progress
+" Git with vim. In progress
+" Find more examples here: https://jb.gg/share-ideavimrc
+
