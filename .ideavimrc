@@ -81,6 +81,9 @@ nnoremap [g :action GotoPreviousError<CR>
 nmap ]b <Action>(NextTab)
 nmap [b <Action>(PreviousTab)
 
+nmap [d :action CloseContent <CR>
+nmap ]d :action ReopenClosedTab<CR>
+
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
 
@@ -102,7 +105,6 @@ nnoremap \, :action JumpToLastChange <CR>
 nnoremap \. :action JumpToNextChange <CR>
 nnoremap \t :action GotoTest<CR>
 nmap \w <action>(ShowErrorDescription)
-nmap \x :action CloseContent <CR>
 nnoremap \q :action Refactorings.QuickListPopupAction<CR>
 
 " NERDTree
