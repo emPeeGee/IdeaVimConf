@@ -39,6 +39,8 @@ let g:WhichKeyDesc_Miscellaneous = "<Space>o  Miscellaneous"
 let g:WhichKeyDesc_SettingsRelated= "<Space>s  Settings Related"
 let g:WhichKeyDesc_Folding = "<Space>z  Folding"
 let g:WhichKeyDesc_Jump = "<Space><Space>  KJump aka EasyMotion"
+let g:WhichKeyDesc_Buffers = "<Space>b Buffers, tabs"
+
 
 " Keybindings
 " Enter normal mode
@@ -104,7 +106,7 @@ nnoremap \i :action GotoImplementation<CR>
 nnoremap \, :action JumpToLastChange <CR>
 nnoremap \. :action JumpToNextChange <CR>
 nnoremap \t :action GotoTest<CR>
-nmap \w <action>(ShowErrorDescription)
+nmap \d <action>(ShowErrorDescription)
 nnoremap \q :action Refactorings.QuickListPopupAction<CR>
 
 " NERDTree
@@ -141,6 +143,11 @@ nnoremap <Leader>sp :action ShowFilePath<CR>
 nmap <leader><leader>s :action KJumpAction<cr>
 nmap <leader><leader>w :action KJumpAction.Word0<cr>
 nmap <leader><leader>l :action KJumpAction.Line<cr>
+
+
+" Buffers, tabs
+nmap <leader>ba :action CloseAllEditors<CR>
+nmap <leader>bs :action CloseAllEditorsButActive<CR>
 
 " Todo:
 " And idea related stuff. Partially
